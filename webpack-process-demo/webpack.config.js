@@ -1,5 +1,6 @@
 var path = require('path')
 var webpack = require('webpack')
+debugger
 module.exports = {
   entry: './src/entry-client.js',
   output: {
@@ -22,6 +23,14 @@ module.exports = {
           'vue-style-loader',
           'css-loader',
           'sass-loader'
+        ],
+      },
+      {
+        test: /\.sass$/,
+        use: [
+          'vue-style-loader',
+          'css-loader',
+          'sass-loader?indentedSyntax'
         ],
       },
       {
