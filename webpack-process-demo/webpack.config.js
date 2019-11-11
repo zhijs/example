@@ -1,6 +1,5 @@
 var path = require('path')
 var webpack = require('webpack')
-debugger
 module.exports = {
   entry: './src/entry-client.js',
   output: {
