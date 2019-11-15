@@ -5,7 +5,7 @@ const app = new koa()
 // 中间件1
 app.use(async  (ctx, next) => {
   console.log('中间件1 start')
-  await next()
+   next()
   console.log('中间件1 end')
   ctx.body = {
    result: '中间件1' 
