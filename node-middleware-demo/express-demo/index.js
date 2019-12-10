@@ -9,9 +9,9 @@ app.use((req, res, next) => {
   // res.state.push('state1')
   // console.log(res.state)
   console.log('中间件1 end')
-  res.json({
-   result: '中间件1'
- })
+ //  res.json({
+ //   result: '中间件1'
+ // })
 })
 
 // 中间件2
@@ -29,9 +29,9 @@ app.use((req, res, next) => {
   // 中间件3
 app.use((req, res, next) => {
     console.log('中间件3 start')
-    res.json({
-      result: '中间件3' 
-    })
+    // res.json({
+    //   result: '中间件3' 
+    // })
     console.log('中间件3 end')
     // res.state = ['state3']
   })
