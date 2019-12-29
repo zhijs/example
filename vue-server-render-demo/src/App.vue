@@ -55,8 +55,8 @@
     beforeCreate () {
       console.log('beforeCreate-------');
     },
-    created () {
-      this.goods = this.$store.state.goods;
+    async created () {
+      this.goods = this.$store.state.goods || [];
     },
      beforeMount() {
       // console.log('beforeMount-------');

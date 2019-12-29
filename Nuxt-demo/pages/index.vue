@@ -1,39 +1,25 @@
 <template>
   <div class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        nuxt-demo
-      </h1>
-      <h2 class="subtitle">
-        My perfect Nuxt.js project
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-    </div>
+    <com1></com1>
   </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+import com1 from '~/components/com1.vue'
 
 export default {
   components: {
-    Logo
+    com1
+  },
+  data () {
+    return {
+      message: '123'  
+    }
+  },
+  head () {
+    return {
+      title: "nuxt demo"  
+    }  
   }
 }
 </script>
