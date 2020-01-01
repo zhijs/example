@@ -49,15 +49,26 @@
         //     des: '西瓜（学名：Citrullus lanatus (Thunb.) Matsum. et Nakai）'
         //   }      
         // ]
-        goods: []
       }
     },
     beforeCreate () {
       console.log('beforeCreate-------');
+      let a = 1
+      const c = 2
+      let fn = () => {
+        console.log('fn-----')  
+      }
+      console.log(c)
+      console.log('a-----', a)
     },
-    async created () {
-      this.goods = this.$store.state.goods || [];
-    },
+    // async created () {
+    //   console.log('create-----',  this.$store)
+    //   try {
+    //     await this.$store.dispatch('fetchGoods')
+    //   } catch(e) {
+    //     console.log(e)  
+    //   }
+    // },
      beforeMount() {
       // console.log('beforeMount-------');
       // let item = {
@@ -85,12 +96,12 @@
         }
         this.goods.push(good);
       }
+    },
+    computed: {
+      goods () {
+        return this.$store.state.goods;
+      }
     }
-    // computed: {
-    //   goods () {
-    //     return this.$store.state.goods;
-    //   }
-    // }
   };
 </script>
 <style>

@@ -26,22 +26,20 @@ module.exports = {
             // other preprocessors should work out of the box, no loader config like this necessary.
             'scss': [
               'vue-style-loader',
-              'css-loader',
-              'sass-loader'
+              'css-loader'
             ],
             'sass': [
-              'vue-style-loader',
-              'css-loader'
+              'vue-style-loader'
             ]
           }
           // other vue-loader options go here
         }
       },
-      {
-        test: /\.js$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/
-      },
+      // {
+      //   test: /\.js$/,
+      //   loader: 'babel-loader',
+      //   exclude: /node_modules/
+      // },
       {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',

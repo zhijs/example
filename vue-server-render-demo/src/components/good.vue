@@ -7,7 +7,8 @@
 <script>
   export default {
     props:{
-      good: Object
+      good: Object,
+      default: () => {}
     },
      beforeCreate () {
       console.log('good component beforeCreate-------');

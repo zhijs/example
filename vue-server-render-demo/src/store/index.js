@@ -9,7 +9,7 @@ export function createStore() {
     mutations: {
       setGoods (state, goods) {
         console.log('set goods')
-        console.log(goods)
+        console.log(state)
         state.goods = goods
       },
       addComment(state, item) {
