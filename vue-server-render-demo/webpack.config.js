@@ -1,5 +1,6 @@
 var path = require('path')
 var webpack = require('webpack')
+debugger
 module.exports = {
   entry: './src/entry-client.js',
   output: {
@@ -63,7 +64,7 @@ module.exports = {
   performance: {
     hints: false
   },
-  devtool: '#eval-source-map'
+  devtool: 'source-map'
 }
 
 if (process.env.NODE_ENV === 'production') {

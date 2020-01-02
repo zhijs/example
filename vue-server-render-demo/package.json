@@ -8,11 +8,16 @@
   "scripts": {
     "start": "npm run build && npm run start-server",
     "build": "npm run build-client && npm run build-server",
-    "build-client": "cross-env NODE_ENV=production node --inspect-brk ./node_modules/webpack/bin/webpack.js --hide-modules",
+    "build-client": "node ./node_modules/webpack/bin/webpack.js --config webpack.config.js",
     "build-server": "cross-env NODE_ENV=production webpack --config webpack.server.config.js --progress --hide-modules",
     "start-server": "node server.js"
   },
   "dependencies": {
+    "@babel/core": "^7.7.7",
+    "@babel/plugin-transform-runtime": "^7.7.6",
+    "@babel/preset-env": "^7.7.7",
+    "@babel/runtime": "^7.7.7",
+    "babel-loader": "^8.0.0-beta.0",
     "express": "^4.16.2",
     "vue": "^2.4.4",
     "vue-router": "^3.0.1",
@@ -26,10 +31,6 @@
     "not ie <= 8"
   ],
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2",
-    "babel-preset-env": "^1.6.0",
-    "babel-preset-stage-3": "^6.24.1",
     "cross-env": "^5.0.5",
     "css-loader": "^0.28.7",
     "file-loader": "^1.1.4",

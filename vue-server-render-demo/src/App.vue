@@ -61,14 +61,14 @@
       console.log(c)
       console.log('a-----', a)
     },
-    // async created () {
-    //   console.log('create-----',  this.$store)
-    //   try {
-    //     await this.$store.dispatch('fetchGoods')
-    //   } catch(e) {
-    //     console.log(e)  
-    //   }
-    // },
+    async created () {
+      console.log('create-----',  this.$store)
+      try {
+        await this.$store.dispatch('fetchGoods')
+      } catch(e) {
+        console.log(e)
+      }
+    },
      beforeMount() {
       // console.log('beforeMount-------');
       // let item = {
@@ -99,7 +99,7 @@
     },
     computed: {
       goods () {
-        return this.$store.state.goods;
+        return this.$store.state.goods || [];
       }
     }
   };
