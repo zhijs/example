@@ -8,6 +8,7 @@
   "scripts": {
     "start": "npm run build && npm run start-server",
     "build": "npm run build-client && npm run build-server",
+    "dev": "webpack-dev-server --open --hot --inline",
     "build-client": "node ./node_modules/webpack/bin/webpack.js --config webpack.config.js",
     "build-server": "cross-env NODE_ENV=production webpack --config webpack.server.config.js --progress --hide-modules",
     "start-server": "node server.js"
@@ -31,12 +32,13 @@
     "not ie <= 8"
   ],
   "devDependencies": {
+    "copy-webpack-plugin": "^5.1.1",
     "cross-env": "^5.0.5",
     "css-loader": "^0.28.7",
     "file-loader": "^1.1.4",
     "vue-loader": "^13.0.5",
     "vue-template-compiler": "^2.4.4",
     "webpack": "^3.6.0",
-    "webpack-dev-server": "^2.9.1"
+    "webpack-dev-server": "^2.11.5"
   }
 }

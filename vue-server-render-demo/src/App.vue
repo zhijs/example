@@ -51,20 +51,11 @@
         // ]
       }
     },
-    beforeCreate () {
-      console.log('beforeCreate-------');
-      let a = 1
-      const c = 2
-      let fn = () => {
-        console.log('fn-----')  
-      }
-      console.log(c)
-      console.log('a-----', a)
-    },
     async created () {
-      console.log('create-----',  this.$store)
       try {
+        console.log('fetch start')
         await this.$store.dispatch('fetchGoods')
+        console.log('fetch end ')
       } catch(e) {
         console.log(e)
       }
@@ -79,7 +70,7 @@
       // this.goods.push(item);
     },
     mounted () {
-      // console.log('created-------');
+      console.log('mounted------', this.goods)
       //  let item = {
       //   name: '荔枝',
       //   price: '$1.8',
@@ -99,7 +90,12 @@
     },
     computed: {
       goods () {
-        return this.$store.state.goods || [];
+        if (this.$store.state.goods) {
+          console.log('233333333')
+          console.log(this.$store.state.goods.length)
+          return this.$store.state.goods.goods
+        }
+        return [];
       }
     }
   };

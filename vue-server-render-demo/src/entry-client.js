@@ -1,5 +1,3 @@
-
-debugger
 import { createApp } from './main.js';
 
 // client-specific bootstrapping logic...
