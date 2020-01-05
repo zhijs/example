@@ -1,0 +1,23 @@
+{
+  "name": "koa-sequlize-mysql-demo",
+  "version": "1.0.0",
+  "description": "koa + sequlize + mysql 例子",
+  "main": "index.js",
+  "dependencies": {
+    "koa": "^2.11.0",
+    "koa-body": "^4.1.1",
+    "koa-router": "^7.4.0",
+    "mysql2": "^2.1.0",
+    "sequelize": "^5.21.3"
+  },
+  "devDependencies": {
+    "supervisor": "^0.12.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "supervisor --inspect-brk index.js",
+    "debug": "node --inspect-brk index.js"
+  },
+  "author": "zhijs",
+  "license": "MIT"
+}
