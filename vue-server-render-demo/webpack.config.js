@@ -4,7 +4,7 @@ module.exports = {
   entry: './src/entry-client.js',
   output: {
     path: path.resolve(__dirname, './dist'),
-    publicPath: './dist/',
+    publicPath: '',
     filename: 'build.js'
   },
   module: {

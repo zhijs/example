@@ -70,13 +70,7 @@
       // this.goods.push(item);
     },
     mounted () {
-      console.log('mounted------', this.goods)
-      //  let item = {
-      //   name: '荔枝',
-      //   price: '$1.8',
-      //   des: '荔枝（学名：Litchi chinensis Sonn.）无患子科，荔枝属常绿乔木，高约10米。果皮有鳞斑状突起，鲜红，紫红。成熟时至鲜红色；种子全部被肉质假种皮包裹。花期春季，果期夏季。果肉产鲜时半透明凝脂状，味香美，但不耐储藏。'
-      // }
-      // this.goods.push(item);
+      console.log('mounted---')
     },
     methods: {
       addGood () {
@@ -91,13 +85,11 @@
     computed: {
       goods () {
         if (this.$store.state.goods) {
-          console.log('233333333')
-          console.log(this.$store.state.goods.length)
-          return this.$store.state.goods.goods
+          return this.$store.state.goods
         }
         return [];
       }
-    }
+    },
   };
 </script>
 <style>

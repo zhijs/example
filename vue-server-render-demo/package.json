@@ -8,7 +8,7 @@
   "scripts": {
     "start": "npm run build && npm run start-server",
     "build": "npm run build-client && npm run build-server",
-    "dev": "webpack-dev-server --open --hot --inline",
+    "dev": "webpack-dev-server --open --hot --inline --watch",
     "build-client": "node ./node_modules/webpack/bin/webpack.js --config webpack.config.js",
     "build-server": "cross-env NODE_ENV=production webpack --config webpack.server.config.js --progress --hide-modules",
     "start-server": "node server.js"
