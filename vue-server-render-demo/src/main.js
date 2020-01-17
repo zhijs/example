@@ -11,12 +11,10 @@ import { createStore } from './store/index.js'
 export function createApp() {
     const router = createRouter();
     const store = createStore();
-    debugger
     const app = new Vue({
         router,
         store,
         render: h => h(App)
     });
-
     return { app, router };
 }
