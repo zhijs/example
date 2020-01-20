@@ -1,0 +1,44 @@
+{
+  "name": "vue-ssr",
+  "description": "VueJs using service side render",
+  "version": "1.0.0",
+  "author": "Santiago Garcia da Rosa",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "npm run build && npm run start-server",
+    "build": "npm run build-client && npm run build-server",
+    "dev": "webpack-dev-server --open --hot --inline --watch",
+    "build-client": "node ./node_modules/webpack/bin/webpack.js --config webpack.config.js",
+    "build-server": "cross-env NODE_ENV=production webpack --config webpack.server.config.js --progress --hide-modules",
+    "start-server": "node server.js"
+  },
+  "dependencies": {
+    "@babel/core": "^7.7.7",
+    "@babel/plugin-transform-runtime": "^7.7.6",
+    "@babel/preset-env": "^7.7.7",
+    "@babel/runtime": "^7.7.7",
+    "babel-loader": "^8.0.0-beta.0",
+    "express": "^4.16.2",
+    "vue": "^2.4.4",
+    "vue-router": "^3.0.1",
+    "vue-server-renderer": "^2.5.3",
+    "vuex": "^3.0.1",
+    "webpack-merge": "^4.1.1"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ],
+  "devDependencies": {
+    "copy-webpack-plugin": "^5.1.1",
+    "cross-env": "^5.0.5",
+    "css-loader": "^0.28.7",
+    "file-loader": "^1.1.4",
+    "vue-loader": "^13.0.5",
+    "vue-template-compiler": "^2.4.4",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.11.5"
+  }
+}
