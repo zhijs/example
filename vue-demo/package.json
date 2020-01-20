@@ -6,12 +6,8 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "npm run build && npm run start-server",
-    "build": "npm run build-client && npm run build-server",
-    "dev": "webpack-dev-server --open --hot --inline --watch",
-    "build-client": "node ./node_modules/webpack/bin/webpack.js --config webpack.config.js",
-    "build-server": "cross-env NODE_ENV=production webpack --config webpack.server.config.js --progress --hide-modules",
-    "start-server": "node server.js"
+    "build": "webpack --config webpack.config.js",
+    "dev": "webpack-dev-server --open --hot --inline --watch"
   },
   "dependencies": {
     "@babel/core": "^7.7.7",
