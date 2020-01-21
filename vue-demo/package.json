@@ -7,7 +7,10 @@
   "private": true,
   "scripts": {
     "build": "webpack --config webpack.config.js",
-    "dev": "webpack-dev-server --open --hot --inline --watch"
+    "dev": "webpack-dev-server --open --hot --inline --watch",
+    "build-server": "webpack --config webpack.server.config.js",
+    "start-server": "node --inspect-brk ./dist/build-server.js"
+ 
   },
   "dependencies": {
     "@babel/core": "^7.7.7",
