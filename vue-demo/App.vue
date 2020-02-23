@@ -1,5 +1,5 @@
 <template>
-  <div>{{message}}</div>
+  <div @click="handleClick">{{message}}</div>
 </template>
 <script>
   export default {
@@ -7,6 +7,17 @@
       return {
          message: 'hellow world' 
       }
-    }
+    },
+    created() {
+      console.log('components----create')
+    },
+    beforeMount() {
+      console.log('components----beforeMounted')
+    },
+    methods: {
+      handleClick () {
+        console.log('handleClick')  
+      }
+    },
   }
 </script>
