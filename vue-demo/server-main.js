@@ -9,8 +9,10 @@ const renderer = require('vue-server-renderer').createRenderer({
 });
 
 server.get('*', (req, res) => { 
+   debugger
    renderer.renderToString(app, function (err, html) {   
      if (err) {
+       console.log('error')
        console.log(err)
        if (err.code === 404) {
          res.status(404).end('Page not found')
@@ -22,5 +24,4 @@ server.get('*', (req, res) => {
      }
    });         
 }); 
-
 server.listen(8080);
