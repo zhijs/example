@@ -4,7 +4,7 @@ var merge = require('webpack-merge')
 var webpackConfig = {
     target: 'node',
     entry: {
-        app: './server-main.js'
+        app: './main.js'
     },
     module: {
      rules: [
@@ -54,6 +54,6 @@ var webpackConfig = {
         filename: 'build-server.js',
         libraryTarget: 'commonjs2'
     },
-    // externals: Object.keys(require('./package.json').dependencies),
-}
+    externals: Object.keys(require('./package.json').dependencies),
+})
 module.exports = webpackConfig

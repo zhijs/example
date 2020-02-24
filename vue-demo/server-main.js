@@ -2,14 +2,17 @@ const express = require('express');
 const server = express();
 const fs = require('fs');
 const path = require('path');
-const app = require('./main.js').app
+const app = require('./dist/build-server.js').app
+
 const renderer = require('vue-server-renderer').createRenderer({
   //set template
   template: fs.readFileSync('./index.html', 'utf-8')
 });
 
+console.log('app')
+console.log(app)
 server.get('*', (req, res) => { 
-   debugger
+  debugger
    renderer.renderToString(app, function (err, html) {   
      if (err) {
        console.log('error')

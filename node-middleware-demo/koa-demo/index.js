@@ -1,7 +1,8 @@
 const koa = require('koa')
-
+const Upload = require('./upload.js')
 const app = new koa()
 
+const upload = new Upload()
 // 中间件1
 app.use(async  (ctx, next) => {
   console.log('中间件1 start')
@@ -28,14 +29,14 @@ app.use(async (ctx, next) => {
   })
 
   // 中间件3
-app.use(async (ctx, next) => {
-    console.log('中间件3 start')
-    console.log(ctx.req.state)
-    ctx.res.state = ['state3']
-    console.log('中间件3 end')
-    ctx.body = {
-      result: '中间件3' 
-    }
-  })
-
-  app.listen(9002)
+// app.use(async (ctx, next) => {
+//     console.log('中间件3 start')
+//     console.log(ctx.req.state)
+//     ctx.res.state = ['state3']
+//     console.log('中间件3 end')
+//     ctx.body = {
+//       result: '中间件3' 
+//     }
+//   })
+app.use(upload.handler.bind(upload))
+app.listen(9002)

@@ -46165,6 +46165,7 @@ TemplateRenderer.prototype.renderPrefetchLinks = function renderPrefetchLinks (c
     var alreadyRendered = function (file) {
       return usedAsyncFiles && usedAsyncFiles.some(function (f) { return f.file === file; })
     };
+<<<<<<< HEAD
     return this.prefetchFiles.map(function (ref) {
         var file = ref.file;
         var fileWithoutQuery = ref.fileWithoutQuery;
@@ -46180,6 +46181,16 @@ TemplateRenderer.prototype.renderPrefetchLinks = function renderPrefetchLinks (c
     }).join('')
   } else {
     return ''
+=======
+  },
+
+  created() {
+    console.log('components----create');
+  },
+
+  beforeMount() {
+    console.log('components----beforeMounted');
+>>>>>>> df68869f8c246d5a32b5d34586add075e62ee66a
   }
 };
 
@@ -46195,6 +46206,7 @@ TemplateRenderer.prototype.renderState = function renderState (context, options)
     : ''
 };
 
+<<<<<<< HEAD
 TemplateRenderer.prototype.renderScripts = function renderScripts (context) {
     var this$1 = this;
 
@@ -46269,8 +46281,43 @@ function getPreloadType (ext) {
 
 
 
+=======
+/***/ }),
+/* 1 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__App_vue__ = __webpack_require__(3);
 
 
+const app =  new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
+  el: '#app',
+  render: (h) => h(__WEBPACK_IMPORTED_MODULE_1__App_vue__["a" /* default */]),
+  data () {
+    return {
+      a: 'test'  
+    }
+  },
+  created: () => {
+    console.log('created----')
+  },
+  beforeMount: () => {
+    console.log('beforeMount----')
+  }
+})
+/* harmony export (immutable) */ __webpack_exports__["app"] = app;
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports) {
+>>>>>>> df68869f8c246d5a32b5d34586add075e62ee66a
+
+
+<<<<<<< HEAD
 function createRenderer (ref) {
   if ( ref === void 0 ) ref = {};
   var modules = ref.modules; if ( modules === void 0 ) modules = [];
@@ -46293,6 +46340,18 @@ function createRenderer (ref) {
     clientManifest: clientManifest,
     serializer: serializer
   });
+=======
+/***/ }),
+/* 3 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_App_vue__ = __webpack_require__(0);
+/* unused harmony namespace reexport */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_472cff63_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_App_vue__ = __webpack_require__(5);
+var normalizeComponent = __webpack_require__(4)
+/* script */
+>>>>>>> df68869f8c246d5a32b5d34586add075e62ee66a
 
   return {
     renderToString: function renderToString (
@@ -46310,11 +46369,31 @@ function createRenderer (ref) {
         templateRenderer.bindRenderFns(context);
       }
 
+<<<<<<< HEAD
       // no callback, return Promise
       var promise;
       if (!cb) {
         ((assign = createPromiseCallback(), promise = assign.promise, cb = assign.cb));
       }
+=======
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = "4c16f1c1"
+var Component = normalizeComponent(
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_App_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_472cff63_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_App_vue__["a" /* default */],
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "App.vue"
+>>>>>>> df68869f8c246d5a32b5d34586add075e62ee66a
 
       var result = '';
       var write = createWriteFunction(function (text) {
@@ -46355,6 +46434,7 @@ function createRenderer (ref) {
       return promise
     },
 
+<<<<<<< HEAD
     renderToStream: function renderToStream (
       component,
       context
@@ -46392,6 +46472,11 @@ function createRenderer (ref) {
     }
   }
 }
+=======
+/***/ }),
+/* 4 */
+/***/ (function(module, exports) {
+>>>>>>> df68869f8c246d5a32b5d34586add075e62ee66a
 
 var vm = __webpack_require__(67);
 var path$1 = __webpack_require__(0);
@@ -46736,7 +46821,13 @@ function createBundleRendererCreator (
 
 /*  */
 
+<<<<<<< HEAD
 process.env.VUE_ENV = 'server';
+=======
+/***/ }),
+/* 5 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+>>>>>>> df68869f8c246d5a32b5d34586add075e62ee66a
 
 function createRenderer$1 (options) {
   if ( options === void 0 ) options = {};
@@ -46751,11 +46842,14 @@ function createRenderer$1 (options) {
   }))
 }
 
+<<<<<<< HEAD
 var createBundleRenderer = createBundleRendererCreator(createRenderer$1);
 
 exports.createRenderer = createRenderer$1;
 exports.createBundleRenderer = createBundleRenderer;
 
 
+=======
+>>>>>>> df68869f8c246d5a32b5d34586add075e62ee66a
 /***/ })
 /******/ ]);
