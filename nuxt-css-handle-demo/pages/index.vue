@@ -9,7 +9,6 @@
 
 <script>
 import  '@/assets/index1.css'
-import  '@/assets/common.css'
 import PageCom1 from '@/components/page-com1.vue'
 export default {
   components: {

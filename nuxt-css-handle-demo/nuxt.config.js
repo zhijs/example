@@ -1,5 +1,6 @@
 const StyleSplitPlugin = require('./plugins/style-split')
-
+const ExtractCssChunksPlugin = require('extract-css-chunks-webpack-plugin');
+var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 module.exports = {
   mode: 'universal',
   /*
@@ -55,29 +56,52 @@ module.exports = {
     /*
     ** You can extend webpack config here
     */
-  extractCSS: true,
-  optimization: {
-    minimize: true,
-    splitChunks: {
-      chunks: 'all',
-      cacheGroups: {
-        app: {
-          test: /\.(css|vue)$/,
-          chunks: (chunk) => {
-            console.log('chunk---', chunk.name)  
-          },
-          name: 'app',
-          enforce: true
+    extractCSS: true,
+    optimization: {
+      minimize: true,
+      minimizer: [
+        // terser-webpack-plugin
+        // new OptimizeCssAssetsPlugin({
+        //   assetNameRegExp: /.css$/g
+        // })
+      ],
+     //  splitChunks: {
+     //    chunks: 'all',
+     //    cacheGroups: {
+     //      styles: {
+     //        name: 'styles',
+     //        test: (mod, chunks) => {
+     //          return mod.type === 'css/extract-css-chunks'
+     //        },
+     //        chunks: 'all',
+     //        enforce: true
+     //      }
+     //   }
+     // }
+     splitChunks: {
+        chunks: 'all',
+        cacheGroups: {
+          styles: {
+            name: 'styles',
+            test: (mod, chunks) => {
+              return mod.type === 'css/extract-css-chunks'
+            },
+            chunks: 'all',
+            minChunks: 3,// 在三个路由中被使用到则提取
+            enforce: true,
+            minSize: 0 // 10kB 大小才提取
+          }
         }
-      }
-    }
+     }
   },
   terser: false,
-    extend (config, ctx) {
+  extend (config, ctx) {
       config.plugins.push(
         new StyleSplitPlugin()
       )
-      config.mode = 'development'
     }
   }
+}
+function getCacheGroups () {
+   
 }
