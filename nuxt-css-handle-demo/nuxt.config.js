@@ -1,4 +1,4 @@
-const StyleSplitPlugin = require('./plugins/style-split')
+const RemoveCssFilePlugin = require('./plugins/RemoveCssFilePlugin')
 const ExtractCssChunksPlugin = require('extract-css-chunks-webpack-plugin');
 var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 module.exports = {
@@ -87,7 +87,7 @@ module.exports = {
               return mod.type === 'css/extract-css-chunks'
             },
             chunks: 'all',
-            minChunks: 3,// 在三个路由中被使用到则提取
+            minChunks: 2,// 在三个路由中被使用到则提取
             enforce: true,
             minSize: 0 // 10kB 大小才提取
           }
@@ -97,11 +97,8 @@ module.exports = {
   terser: false,
   extend (config, ctx) {
       config.plugins.push(
-        new StyleSplitPlugin()
+        new RemoveCssFilePlugin()
       )
     }
   }
-}
-function getCacheGroups () {
-   
 }

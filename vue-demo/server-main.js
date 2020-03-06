@@ -2,8 +2,10 @@ const express = require('express');
 const server = express();
 const fs = require('fs');
 const path = require('path');
-const app = require('./dist/build-server.js').app
-
+// const app = require('./dist/build-server.js').app
+const axios1 = require('axios').default
+const axios2 = require('axios').
+debugger
 const renderer = require('vue-server-renderer').createRenderer({
   //set template
   template: fs.readFileSync('./index.html', 'utf-8')

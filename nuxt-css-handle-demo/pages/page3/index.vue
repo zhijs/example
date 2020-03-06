@@ -6,7 +6,6 @@
 
 <script>
 import  '@/assets/index3.css'
-import  '@/assets/common.css'
 export default {
 }
 </script>
