@@ -30,6 +30,7 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    { src: '~/plugins/router-event.js', mode: 'client' },
   ],
   /*
   ** Nuxt.js dev-modules
