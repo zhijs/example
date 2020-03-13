@@ -1,4 +1,4 @@
-const RemoveCssFilePlugin = require('./plugins/RemoveCssFilePlugin')
+const routerChunkToCssPlugin = require('./plugins/router-chunk-to-css')
 const ExtractCssChunksPlugin = require('extract-css-chunks-webpack-plugin');
 var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 module.exports = {
@@ -57,28 +57,14 @@ module.exports = {
     /*
     ** You can extend webpack config here
     */
-    extractCSS: true,
+    extractCSS: process.env.NODE_ENV === 'production',
     optimization: {
       minimize: true,
       minimizer: [
-        // terser-webpack-plugin
-        // new OptimizeCssAssetsPlugin({
-        //   assetNameRegExp: /.css$/g
-        // })
+        new OptimizeCssAssetsPlugin({
+          assetNameRegExp: /.css$/g
+        })
       ],
-     //  splitChunks: {
-     //    chunks: 'all',
-     //    cacheGroups: {
-     //      styles: {
-     //        name: 'styles',
-     //        test: (mod, chunks) => {
-     //          return mod.type === 'css/extract-css-chunks'
-     //        },
-     //        chunks: 'all',
-     //        enforce: true
-     //      }
-     //   }
-     // }
      splitChunks: {
         chunks: 'all',
         cacheGroups: {
@@ -97,9 +83,11 @@ module.exports = {
   },
   terser: false,
   extend (config, ctx) {
-      config.plugins.push(
-        new RemoveCssFilePlugin()
-      )
+      if ( process.env.NODE_ENV === 'production') {
+        config.plugins.push(
+          new routerChunkToCssPlugin()
+        )
+      }
     }
   }
 }

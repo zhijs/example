@@ -9,9 +9,18 @@ export const app =  new Vue({
     }
   },
   created: () => {
-    console.log('created----')
+    console.log('main created----')
   },
   beforeMount: () => {
-    console.log('beforeMount----')
+    console.log('main beforeMount----')
+  },
+  mounted () {
+   console.log('main mounted----')
+  },
+  beforeUpdate() {
+   console.log('main breforeUpdate')
+  },
+  updated() {
+    console.log('main updated----')
   }
 })

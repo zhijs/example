@@ -4,6 +4,7 @@
     <page-com1></page-com1>
     <router-link to="/page2/">点击跳转page2</router-link>
     <router-link to="/page3/">点击跳转page3</router-link>
+    <router-link to="/page3/review?a=22">点击跳转page3/review</router-link>
   </div>
 </template>
 

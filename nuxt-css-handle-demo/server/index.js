@@ -19,10 +19,10 @@ async function start () {
 
   await nuxt.ready()
   // Build in development
-  // if (config.dev) {
-  //   const builder = new Builder(nuxt)
-  //   await builder.build()
-  // }
+  if (config.dev) {
+    const builder = new Builder(nuxt)
+    await builder.build()
+  }
 
   app.use((ctx) => {
     ctx.status = 200
