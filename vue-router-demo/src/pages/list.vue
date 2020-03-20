@@ -3,6 +3,7 @@
     <div v-for="i in 10" :key="i" class="item" @click="handleClick(i)">
       <input type="checkbox" v-if="selectState"/>
       <span class="text">{{"item" + i}}</span>
+      <span>{{nameIndex}}</span>
     </div>
   </div>
 </template>
@@ -11,7 +12,8 @@ export default {
   data () {
     return {
       userId: '',
-      selectIndex: 0
+      selectIndex: 0,
+      name: '2333'
     }
   },
   mounted() {
@@ -23,7 +25,10 @@ export default {
   computed: {
     selectState () {
       return this.$route.query.type === 'operate'
-    }  
+    },
+    nameIndex () {
+      return this.name + this.selectIndex 
+    }
   },
   updated () {
     console.log('updated------', this.selectIndex)

@@ -7,6 +7,7 @@ const router = new VueRouter({
 })
 Vue.config.productionTip = false
 Vue.use(VueRouter)
+debugger
 new Vue({
   render: h => h(App),
   router
