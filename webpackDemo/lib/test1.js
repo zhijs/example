@@ -1,7 +1,7 @@
 
-import './index.css'
+// import('./index.css')
+import comment from './common'
 export default function () {
-  // const comment = import('./common')
-  // comment()
+  comment()
   console.log('test1111111111')
 }

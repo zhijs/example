@@ -15,24 +15,27 @@ module.exports = {
   }, // entry - string
   output: {
     path: path.join(__dirname, 'build'),
-    filename: '[name].[chunkhash].bundle.js'
+    filename: '[id].[hash].bundle.js'
   },
   module: {
     rules: [{
       test: /\.css$/,
       use: [
-        {
-          loader: MiniCssExtractPlugin.loader 
-        },
+        // {
+        //   loader: MiniCssExtractPlugin.loader 
+        // },
         "css-loader"
       ]
     }
   ]
   },
+  optimization: {
+    runtimeChunk: true
+  },
   plugins:[
-    new CleanWebpackPlugin(),
-    new MiniCssExtractPlugin({
-      filename: "[chunkhash].css",
-    })
+    new CleanWebpackPlugin()
+    // new MiniCssExtractPlugin({
+    //   filename: "[chunkhash].css",
+    // })
   ]
 }

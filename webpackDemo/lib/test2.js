@@ -1,5 +1,5 @@
-// const comment = require('./common')
+import comment from './common'
 export default function () {
-  // comment()
+  comment()
   console.log('test2')
 }
