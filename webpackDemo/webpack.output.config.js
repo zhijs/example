@@ -2,12 +2,20 @@
  * 测试 output 配置
  */
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-debugger
 const path = require('path')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
   mode: 'development',
-  stats: 'verbose',
+  stats: {
+    all: undefined,
+    chunks: true,
+    chunkModules: true,
+    assets: true,
+    colors: true,
+    modules: false,
+    timings: true,
+    children: true
+  },
   devtool: 'source-map',
   entry: {
     a: './lib/test1.js',
@@ -29,9 +37,9 @@ module.exports = {
     }
   ]
   },
-  optimization: {
-    runtimeChunk: true
-  },
+  // optimization: {
+  //   runtimeChunk: true
+  // },
   plugins:[
     new CleanWebpackPlugin()
     // new MiniCssExtractPlugin({
