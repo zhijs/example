@@ -1,7 +1,7 @@
 
-// import('./index.css')
-import comment from './common'
+// import('./common.css')
+import('./common.js')
 export default function () {
-  comment()
-  console.log('test1111111111')
+  console.log('test11111')
 }
+document.write('<p>1212121212</>')

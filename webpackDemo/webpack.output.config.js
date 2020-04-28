@@ -1,9 +1,10 @@
 /**
  * 测试 output 配置
  */
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+// const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require('path')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   mode: 'development',
   stats: {
@@ -16,14 +17,14 @@ module.exports = {
     timings: true,
     children: true
   },
-  devtool: 'source-map',
-  entry: {
-    a: './lib/test1.js',
-    b: './lib/test2.js'
-  }, // entry - string
+  entry: ['./lib/test1.js'],
+  // entry: {
+  //   a: './lib/test1.js'
+  //   // b: './lib/test2.js'
+  // }, // entry - string
   output: {
     path: path.join(__dirname, 'build'),
-    filename: '[id].[hash].bundle.js'
+    filename: '[id].bundle1.js'
   },
   module: {
     rules: [{
@@ -41,9 +42,10 @@ module.exports = {
   //   runtimeChunk: true
   // },
   plugins:[
-    new CleanWebpackPlugin()
+    new CleanWebpackPlugin(),
     // new MiniCssExtractPlugin({
-    //   filename: "[chunkhash].css",
-    // })
+    //   filename: "[contenthash].css",
+    // }),
+    new HtmlWebpackPlugin()
   ]
 }

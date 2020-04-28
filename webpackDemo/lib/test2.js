@@ -1,5 +1,5 @@
-import comment from './common'
+
+import './common.css'
 export default function () {
-  comment()
   console.log('test2')
 }
