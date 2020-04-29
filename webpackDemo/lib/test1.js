@@ -1,6 +1,6 @@
 
 // import('./common.css')
-import('./common.js')
+// import('./common.js')
 export default function () {
   console.log('test11111')
 }
