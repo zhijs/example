@@ -15,7 +15,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'build'),
     filename: '[contenthash].bundle1.js',
-    libraryTarget: 'window',
+    libraryTarget: 'umd',
     library: 'mylib'
   },
   module: {
