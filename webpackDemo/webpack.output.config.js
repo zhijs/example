@@ -16,7 +16,12 @@ module.exports = {
     path: path.join(__dirname, 'build'),
     filename: '[contenthash].bundle1.js',
     libraryTarget: 'umd',
-    library: 'mylib'
+    // library: 'mylib'
+    library:{
+      root: 'mylib',
+      amd: 'my-lib',
+      commonjs: 'my-common-lib'
+    }
   },
   module: {
     rules: [{
