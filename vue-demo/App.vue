@@ -1,6 +1,6 @@
 <template>
   <div>
-    <count :count="count1" @changeCount="handleChangeCount"></count>
+    <count :count="count1" @changeCount="handleChangeCount('1111')"></count>
     <div>父 count</div>
   </div>
   
