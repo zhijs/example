@@ -12927,16 +12927,19 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("count", {
-        attrs: { count: _vm.count1 },
-        on: {
-          changeCount: function($event) {
-            return _vm.handleChangeCount("1111")
-          }
-        }
-      }),
+      _c("count", { attrs: { count: _vm.count1 } }),
       _vm._v(" "),
-      _c("div", [_vm._v("父 count")])
+      _c(
+        "div",
+        {
+          on: {
+            changeCount: function($event) {
+              return _vm.handleChangeCount("1111")
+            }
+          }
+        },
+        [_vm._v("父 count")]
+      )
     ],
     1
   )

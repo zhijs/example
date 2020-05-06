@@ -1,7 +1,7 @@
 <template>
   <div>
-    <count :count="count1" @changeCount="handleChangeCount('1111')"></count>
-    <div>父 count</div>
+    <count :count="count1"></count>
+    <div @changeCount="handleChangeCount('1111')">父 count</div>
   </div>
   
 </template>
