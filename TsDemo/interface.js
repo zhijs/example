@@ -11,17 +11,13 @@
 //  *   y: Number
 //  * }
 //  */
-
 // class MyPoint implements Point {
-    
 // }
-
 // interface Person {
 //   readonly name: String
 // }
 // const p:Person = {name: 'hh'}
 // p.name = 'dd'
-
 /**
  * interface 可以定义函数类型
  * 只需要定义函数参数类型和返回值类型
@@ -31,10 +27,8 @@
 //    (name: String): String;
 // }
 // let p: Person = (name: String): String => {return `hello ${name}`} 
-
 // // 参数名可以和 interface不 一致
 // let p1: Person = (_name: String): String => {return `hello ${_name}`} 
-
 // /**
 //  * 字符串和数字索引
 //  * 其中索引变量名，如 key 可以随意变换
@@ -47,12 +41,10 @@
 // }
 // var strArr: StringArray = ['a', 'b']
 // strArr[1]
-
 // var strObj:StringObj  = {
 //   a: 'a',
 //   b: 'b'  
 // }
-
 // interface PointX {
 //   x: number  
 // }
@@ -60,11 +52,11 @@
 //   y: number  
 // }
 /**
- * 相当于 
+ * 相当于
  * interface PointZ {
  *   x: number
- *   y: number  
- *   z: number 
+ *   y: number
+ *   z: number
  *  }
  */
 // interface PointZ extends PointX, PointY {
@@ -75,27 +67,16 @@
 //   y: 2,
 //   z: 3
 // }
-
-class Person {
-  age: number
-  say(name: String): void {
-    console.log('name')
-  }  
-}
-/**
- * 继承类，相当于继承
- * 类的属性
- */
-interface Man extends Person {
-  name: String
-}
-
-const man: Man = {
-  name: 'xx',
-  age: 10,
-  say: (name: String): void => {
-    console.log(`hi ${name}`)  
-  }
-}
-
-
+var Person = /** @class */ (function () {
+    function Person() {
+    }
+    Person.prototype.say = function (name) {
+        console.log('name');
+    };
+    return Person;
+}());
+var man = {
+    name: 'xx',
+    age: 10,
+    say: function (name) { return void ; }
+};
