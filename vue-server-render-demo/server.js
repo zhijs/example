@@ -3,12 +3,15 @@ const express = require('express');
 const server = express();
 const fs = require('fs');
 const path = require('path');
-//obtain bundle
-const bundle =  require('./dist/server.bundle.js');
+
 //get renderer from vue server renderer
-const renderer = require('vue-server-renderer').createRenderer({
+const serverBundle = require('./dist/vue-ssr-server-bundle.json')
+const { createBundleRenderer } = require('vue-server-renderer')
+// const clientManifest = require('./dist/vue-ssr-client-manifest.json')
+const renderer = createBundleRenderer(serverBundle, {
     //set template
-    template: fs.readFileSync('./index.html', 'utf-8')
+  // clientManifest,
+  template: fs.readFileSync('./index.html', 'utf-8')
 });
 
 server.use('/dist', express.static(path.join(__dirname, './dist')));
@@ -21,24 +24,12 @@ server.get('*', (req, res) => {
             <meta description="vuejs server side render">
         `
     };
-    bundle.default(context).then((app) => {    
-        //context to use as data source
-        //in the template for interpolation
-
-        renderer.renderToString(app, context, function (err, html) {   
-            if (err) {
-              if (err.code === 404) {
-                res.status(404).end('Page not found')
-              } else {
-                res.status(500).end('Internal Server Error')
-              }
-            } else {
-              res.end(html)
-            }
-          });        
-    }, (err) => {
-        console.log(err);
-    });  
+    // 这里无需传入一个应用程序，因为在执行 bundle 时已经自动创建过。
+  // 现在我们的服务器与应用程序已经解耦！
+  renderer.renderToString(context, (err, html) => {
+    // 处理异常……
+    res.end(html)
+  })
 });  
 
 server.listen(8080);
