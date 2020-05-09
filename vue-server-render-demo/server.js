@@ -4,13 +4,21 @@ const server = express();
 const fs = require('fs');
 const path = require('path');
 
-//get renderer from vue server renderer
+/**
+ * server.js
+ * 负责启动 server 服务，并对 vue 实例进行
+ * 渲染成字符串，返回给浏览器
+ */
 const serverBundle = require('./dist/vue-ssr-server-bundle.json')
 const { createBundleRenderer } = require('vue-server-renderer')
-// const clientManifest = require('./dist/vue-ssr-client-manifest.json')
+/**
+ * 这里使用客户端的构建清单
+ * render 会从这个清单的辨别资源
+ * 然后将 CSS、Script 注入到 HTML 字符串中
+ */
+const clientManifest = require('./dist/vue-ssr-client-manifest.json')
 const renderer = createBundleRenderer(serverBundle, {
-    //set template
-  // clientManifest,
+  clientManifest, // 客户端构建清单
   template: fs.readFileSync('./index.html', 'utf-8')
 });
 
@@ -24,12 +32,8 @@ server.get('*', (req, res) => {
             <meta description="vuejs server side render">
         `
     };
-    // 这里无需传入一个应用程序，因为在执行 bundle 时已经自动创建过。
-  // 现在我们的服务器与应用程序已经解耦！
   renderer.renderToString(context, (err, html) => {
-    // 处理异常……
     res.end(html)
   })
 });  
-
 server.listen(8080);
