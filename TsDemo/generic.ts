@@ -26,9 +26,7 @@
  /**
   * 使用类型变量 泛型
   */
-function identity<T>(arg: T): T {
-  return arg  
-}
+
 
 /**
  * 使用方式 1
@@ -44,3 +42,25 @@ var output = identity<String>('String') // 这里 output 会被类型推断为 S
 var output = identity<String>('String')
 var output1 = identity('String') // 这里 output 会被类型推断为 String
 
+interface GenericIdentityFn {
+  <T>(arg: T): T  // 函数类型- 接受 T 类型参数，并返回 T 类型参数
+}
+
+function identity<T>(arg: T): T {
+  return arg  
+}
+
+let myIdentify: GenericIdentityFn = identity
+
+/**
+ * 泛型类
+ * 与泛型接口差不多
+ *  泛型类使用 <> 括起泛型类型，跟在类名后面
+ */
+class GenericIdentity<T> {
+  add: (x: T, y: T) => T  
+}
+const GenericIdentityNumber = new GenericIdentity<number>()
+GenericIdentityNumber.add = function (x: number, y: number) {
+  return x + y  
+}
