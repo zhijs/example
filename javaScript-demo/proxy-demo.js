@@ -62,7 +62,11 @@ function deepReactive(data, cb) {
     }
   })
 }
-const p = deepReactive({a: {b: {c:1}}}, () => {
-  console.log('set----')  
-})
-p.a.b.c = 3 // set----
+// const p = deepReactive({a: {b: {c:1}}}, () => {
+//   console.log('set----')  
+// })
+// p.a.b.c = 3 // set----
+
+var p = new Proxy({a: 1},handler) 
+console.log(p.a)
+p.b = 2

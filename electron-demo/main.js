@@ -7,7 +7,7 @@ const { app, BrowserWindow, Menu } = require('electron')
 
 function createWindow () {   
   // 创建浏览器窗口
-  let win = new BrowserWindow({
+  let win:BrowserWindow  = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: { 
@@ -16,31 +16,23 @@ function createWindow () {
   })
 
   // 加载index.html文件 - 可以加载远程或者本地的页面
-  win.loadFile('view/index.html')
-  // win.setThumbarButtons([
+  win.loadFile('main-render/index.html')
+  // 设置菜单栏
+  // const menu = Menu.buildFromTemplate([
   //   {
-  //     tooltip: '菜单1'
+  //     label: '打开',
+  //     click: async () => {
+  //       console.log('start---')    
+  //     }
   //   },
   //   {
-  //     tooltip: '菜单2'
+  //     label: '关闭',
+  //     click: async () => {
+  //       console.log('end-----')  
+  //     }
   //   }
   // ])
-  // 设置菜单栏
-  const menu = Menu.buildFromTemplate([
-    {
-      label: '打开',
-      click: () => {
-        console.log('start---')    
-      }
-    },
-    {
-      label: '关闭',
-      click: () => {
-        console.log('end-----')  
-      }
-    }
-  ])
-  win.setMenu(menu)
+  win.removeMenu()
   win.webContents.openDevTools()
 }
 // 当 Electron 初始化完成创建一个窗口
