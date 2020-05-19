@@ -12,16 +12,12 @@ module.exports = {
     // b: './lib/test2.js'
     lib: './lib/sayHello'
   }, // entry - string
+  devServer: {
+    
+  },
   output: {
     path: path.join(__dirname, 'build'),
-    filename: '[contenthash].bundle1.js',
-    libraryTarget: 'umd',
-    // library: 'mylib'
-    library:{
-      root: 'mylib',
-      amd: 'my-lib',
-      commonjs: 'my-common-lib'
-    }
+    filename: '[contenthash].bundle1.js'
   },
   module: {
     rules: [{
