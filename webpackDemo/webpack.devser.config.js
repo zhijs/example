@@ -13,7 +13,9 @@ module.exports = {
     lib: './lib/sayHello'
   }, // entry - string
   devServer: {
-    
+     port: 9009,
+     publicPath: '/assset/',
+     contentBase: '/dist/'
   },
   output: {
     path: path.join(__dirname, 'build'),
