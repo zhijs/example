@@ -16,6 +16,7 @@ module.exports = {
     path: path.join(__dirname, 'build'),
     filename: '[contenthash].bundle1.js',
     libraryTarget: 'umd',
+    publicPath: './dist111/',
     // library: 'mylib'
     library:{
       root: 'mylib',
