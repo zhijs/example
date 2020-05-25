@@ -5,10 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --config webpack.devser.config.js",
+    "build": "webpack --config webpack.module.config.js",
     "dev-server": "webpack-dev-server --config webpack.devser.config.js",
     "debug": "node --inspect-brk ./node_modules/webpack/bin/webpack.js",
-    "output": "webpack --config webpack.output.config.js"
+    "output": "webpack --config webpack.output.config.js",
+    "module": "webpack-dev-server --config webpack.module.config.js"
   },
   "author": "",
   "license": "ISC",
@@ -20,5 +21,8 @@
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.4",
     "webpack-dev-server": "^3.11.0"
+  },
+  "dependencies": {
+    "jquery": "^3.5.1"
   }
 }

@@ -1,5 +1,5 @@
 /**
- * 测试 output 配置
+ *  Module 配置测试
  */
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require('path')
@@ -9,24 +9,18 @@ module.exports = {
   mode: 'development',
   entry: {
     a: './lib/test1.js',
-    // b: './lib/test2.js'
-  }, // entry - string
-  devtool: 'source-map',
+  },
   devServer: {
      port: 9009,
-     publicPath: '/assets/', // localhost:9009/assets -> 相当于访问打包在内存中的 index.html
-     contentBase: path.join(__dirname, 'lib'), // 当前工程目录下 lib 文件夹为静态资源地址
-     /**
-      * 相当于 app.use('/static', express.static(path.join(__dirname, 'lib')))
-      * localhost:9009/statis/common.css === __dirname/lib/common.css
-      */
-     contentBasePublicPath: '/static'
+     publicPath: '/', // localhost:9009/assets -> 相当于访问打包在内存中的 index.html
   },
+  devtool: 'source-map',
   output: {
     path: path.join(__dirname, 'build'),
     filename: '[contenthash].bundle1.js'
   },
   module: {
+    noParse: /noParse\.js/,
     rules: [{
       test: /\.css$/,
       use: [
