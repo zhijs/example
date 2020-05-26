@@ -1,5 +1,6 @@
 
-import './index.css'
+import './style/index.css'
+import './style/common.css'
 import './noParse'
 import say from './sayHello'
 export default function () {

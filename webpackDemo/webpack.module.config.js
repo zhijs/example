@@ -20,9 +20,16 @@ module.exports = {
     filename: '[contenthash].bundle1.js'
   },
   module: {
-    noParse: /noParse\.js/,
     rules: [{
       test: /\.css$/,
+      /**
+       * 只有 lib/style/index.css 和 lib/style/common.css
+       *  css 引入才会被 css-loader 处理， 等价于
+       *  include:  path.join(__dirname, 'lib/style/') - 当 style 目录下只有 index.css 和 common.css 的时候
+       */
+      include: [
+        path.join(__dirname, 'lib/style/'),
+      ],
       use: [
         {
           loader: MiniCssExtractPlugin.loader 
