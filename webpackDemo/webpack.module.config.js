@@ -30,12 +30,32 @@ module.exports = {
       include: [
         path.join(__dirname, 'lib/style/'),
       ],
-      use: [
-        {
-          loader: MiniCssExtractPlugin.loader 
-        },
-        "css-loader"
-      ]
+      /**
+       * 等价于
+       * use: [
+       *  {
+       *     loader: MiniCssExtractPlugin.loader 
+       *   },
+       *   "css-loader"
+       * ]
+       */
+      use: (info) => {
+        /**
+         * type info {
+         *  compiler // 当前 webpack 编译对象
+         *  issuer // 当前入口模块
+         *  realResource // 模块的绝对路径
+         *  resource // 一般情况下等于 realResource
+         * }
+         * 
+         */
+        return [
+          {
+            loader: MiniCssExtractPlugin.loader 
+          },
+          "css-loader"
+        ]  
+      }
     }
   ]
   },
