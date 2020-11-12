@@ -76,12 +76,12 @@
 //   z: 3
 // }
 
-class Person {
-  age: number
-  say(name: String): void {
-    console.log('name')
-  }  
-}
+// class Person {
+//   age: number
+//   say(name: String): void {
+//     console.log('name')
+//   }  
+// }
 /**
  * 继承类，相当于继承
  * 类的属性
@@ -99,3 +99,18 @@ const man: Man = {
 }
 
 
+interface Obj{
+  a: String,
+  b: String  
+}
+var f: Obj = {
+  a: 'a',
+  b: 'b'  
+}
+var k: Obj
+// type Keys = keyof Obj
+// k.c = '1'
+var key: String
+for (key in f) {
+  console.log(f[key])
+}

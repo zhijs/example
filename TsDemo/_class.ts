@@ -1,12 +1,12 @@
-// class Person {
-//   public name: String //
-//   constructor (name: String) {
-//     this.name = name  
-//   }
-//   log () {
-//     console.log(this.name) // 类的内部访问
-//   }
-// }
+class Person {
+  public name: String //
+  constructor (name: String) {
+    this.name = name  
+  }
+  log () {
+    console.log(this.name) // 类的内部访问
+  }
+}
 
 // class Man extends Person {
 //   constructor (name) {
@@ -21,11 +21,30 @@
 // var man = new Man('xx')
 // person.name // 实例 protected 实例不能访问
 // man.name // 实例  protected 实例不能访问
-
+interface Obj {
+  a: String,
+  b: Number  
+}
 class MyMath {
-  static PI: number  = 3.1415926
-  static getPerimeter(r: number ): number{
-    return 2 * r * this.PI //  2*R*MyMath.PI 也可以
+  public defaulOption: Obj = {
+    a: '1',
+    b: 2 
+  }
+  public a = {}
+  constructor (option: Obj) {
+    this.defaulOption = {
+      a: '1',
+      b: 2 
+    }
+    let key: keyof Obj
+    // // for (key in option) {
+    // //   this.defaulOption[key] = option[key]
+    // // }  
+    // this.defaulOption.a = '3'
+    this.defaulOption = {
+      ...this.defaulOption,
+      ...option
+    }
   }
 }
 // var myMath = new MyMath()
@@ -54,17 +73,17 @@ class MyMath {
  * 类实现接口, 使用 implements 关键字
  * 可以 implements 多个 interface
  */
-interface PointX {
-  x: number  
-}
-interface PointY {
-  y: number
-}
-class PointZ implements PointX, PointY {
-  x: number
-  y: number
-}
+// interface PointX {
+//   x: number  
+// }
+// interface PointY {
+//   y: number
+// }
+// class PointZ implements PointX, PointY {
+//   x: number
+//   y: number
+// }
 
-class Z extends PointZ, MyMath {
+// class Z extends PointZ, MyMath {
 
-}
+// }
