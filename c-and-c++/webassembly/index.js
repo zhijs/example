@@ -31,9 +31,9 @@ Module['ready'] = new Promise(function(resolve, reject) {
   readyPromiseReject = reject;
 });
 
-      if (!Object.getOwnPropertyDescriptor(Module['ready'], '_get_int_addr')) {
-        Object.defineProperty(Module['ready'], '_get_int_addr', { configurable: true, get: function() { abort('You are getting _get_int_addr on the Promise object, instead of the instance. Use .then() to get called back with the instance, see the MODULARIZE docs in src/settings.js') } });
-        Object.defineProperty(Module['ready'], '_get_int_addr', { configurable: true, set: function() { abort('You are setting _get_int_addr on the Promise object, instead of the instance. Use .then() to get called back with the instance, see the MODULARIZE docs in src/settings.js') } });
+      if (!Object.getOwnPropertyDescriptor(Module['ready'], '_getMd5')) {
+        Object.defineProperty(Module['ready'], '_getMd5', { configurable: true, get: function() { abort('You are getting _getMd5 on the Promise object, instead of the instance. Use .then() to get called back with the instance, see the MODULARIZE docs in src/settings.js') } });
+        Object.defineProperty(Module['ready'], '_getMd5', { configurable: true, set: function() { abort('You are setting _getMd5 on the Promise object, instead of the instance. Use .then() to get called back with the instance, see the MODULARIZE docs in src/settings.js') } });
       }
     
 
@@ -649,8 +649,8 @@ var wasmMemory;
 // In the wasm backend, we polyfill the WebAssembly object,
 // so this creates a (non-native-wasm) table for us.
 var wasmTable = new WebAssembly.Table({
-  'initial': 1,
-  'maximum': 1 + 0,
+  'initial': 4,
+  'maximum': 4 + 0,
   'element': 'anyfunc'
 });
 
@@ -1269,11 +1269,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 5244592,
+    STACK_BASE = 5245792,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 1712,
-    DYNAMIC_BASE = 5244592,
-    DYNAMICTOP_PTR = 1552;
+    STACK_MAX = 2912,
+    DYNAMIC_BASE = 5245792,
+    DYNAMICTOP_PTR = 2752;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -1848,7 +1848,7 @@ var ASM_CONSTS = {
 
 
 
-// STATICTOP = STATIC_BASE + 688;
+// STATICTOP = STATIC_BASE + 1888;
 /* global initializers */  __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -1905,7 +1905,11 @@ var ASM_CONSTS = {
     }
 
   function _emscripten_get_sbrk_ptr() {
-      return 1552;
+      return 2752;
+    }
+
+  function _emscripten_memcpy_big(dest, src, num) {
+      HEAPU8.copyWithin(dest, src, src + num);
     }
 
   
@@ -1949,13 +1953,13 @@ function intArrayToString(array) {
 
 
 var asmGlobalArg = {};
-var asmLibraryArg = { "__handle_stack_overflow": ___handle_stack_overflow, "emscripten_get_sbrk_ptr": _emscripten_get_sbrk_ptr, "emscripten_resize_heap": _emscripten_resize_heap, "memory": wasmMemory, "table": wasmTable };
+var asmLibraryArg = { "__handle_stack_overflow": ___handle_stack_overflow, "emscripten_get_sbrk_ptr": _emscripten_get_sbrk_ptr, "emscripten_memcpy_big": _emscripten_memcpy_big, "emscripten_resize_heap": _emscripten_resize_heap, "memory": wasmMemory, "table": wasmTable };
 var asm = createWasm();
 /** @type {function(...*):?} */
 var ___wasm_call_ctors = Module["___wasm_call_ctors"] = createExportWrapper("__wasm_call_ctors");
 
 /** @type {function(...*):?} */
-var _get_int_addr = Module["_get_int_addr"] = createExportWrapper("get_int_addr");
+var _getMd5 = Module["_getMd5"] = createExportWrapper("getMd5");
 
 /** @type {function(...*):?} */
 var ___errno_location = Module["___errno_location"] = createExportWrapper("__errno_location");
@@ -1983,6 +1987,15 @@ var ___set_stack_limit = Module["___set_stack_limit"] = createExportWrapper("__s
 
 /** @type {function(...*):?} */
 var __growWasmMemory = Module["__growWasmMemory"] = createExportWrapper("__growWasmMemory");
+
+/** @type {function(...*):?} */
+var dynCall_iidiiii = Module["dynCall_iidiiii"] = createExportWrapper("dynCall_iidiiii");
+
+/** @type {function(...*):?} */
+var dynCall_vii = Module["dynCall_vii"] = createExportWrapper("dynCall_vii");
+
+/** @type {function(...*):?} */
+var dynCall_iiii = Module["dynCall_iiii"] = createExportWrapper("dynCall_iiii");
 
 
 

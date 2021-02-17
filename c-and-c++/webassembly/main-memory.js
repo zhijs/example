@@ -12,4 +12,9 @@ window.WasmModule().then(module => {
   console.log(module)
   //用 HEAP32 来访问内存中对应的数据，表示将内存地址按每个元素 4 个字节来访问
   console.log(module.HEAP32[pr / 4]) // 17
+  
+  // 更改 c++ 里面的变量数据
+  module.HEAP32[pr / 4] = 20
+  
+  console.log(module._print_var())
 })
