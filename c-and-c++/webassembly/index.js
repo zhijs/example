@@ -43,6 +43,12 @@ Module['ready'] = new Promise(function(resolve, reject) {
       }
     
 
+      if (!Object.getOwnPropertyDescriptor(Module['ready'], '_printText')) {
+        Object.defineProperty(Module['ready'], '_printText', { configurable: true, get: function() { abort('You are getting _printText on the Promise object, instead of the instance. Use .then() to get called back with the instance, see the MODULARIZE docs in src/settings.js') } });
+        Object.defineProperty(Module['ready'], '_printText', { configurable: true, set: function() { abort('You are setting _printText on the Promise object, instead of the instance. Use .then() to get called back with the instance, see the MODULARIZE docs in src/settings.js') } });
+      }
+    
+
       if (!Object.getOwnPropertyDescriptor(Module['ready'], '_malloc')) {
         Object.defineProperty(Module['ready'], '_malloc', { configurable: true, get: function() { abort('You are getting _malloc on the Promise object, instead of the instance. Use .then() to get called back with the instance, see the MODULARIZE docs in src/settings.js') } });
         Object.defineProperty(Module['ready'], '_malloc', { configurable: true, set: function() { abort('You are setting _malloc on the Promise object, instead of the instance. Use .then() to get called back with the instance, see the MODULARIZE docs in src/settings.js') } });
@@ -1275,11 +1281,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 5264240,
+    STACK_BASE = 5264320,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 21360,
-    DYNAMIC_BASE = 5264240,
-    DYNAMICTOP_PTR = 21200;
+    STACK_MAX = 21440,
+    DYNAMIC_BASE = 5264320,
+    DYNAMICTOP_PTR = 21280;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -1836,7 +1842,7 @@ var ASM_CONSTS = {
 
 
 
-// STATICTOP = STATIC_BASE + 20336;
+// STATICTOP = STATIC_BASE + 20416;
 /* global initializers */  __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -4294,7 +4300,7 @@ var ASM_CONSTS = {
     }
 
   function _emscripten_get_sbrk_ptr() {
-      return 21200;
+      return 21280;
     }
 
   function _emscripten_memcpy_big(dest, src, num) {
@@ -4875,6 +4881,9 @@ var _getMd5 = Module["_getMd5"] = createExportWrapper("getMd5");
 
 /** @type {function(...*):?} */
 var _printMd5 = Module["_printMd5"] = createExportWrapper("printMd5");
+
+/** @type {function(...*):?} */
+var _printText = Module["_printText"] = createExportWrapper("printText");
 
 /** @type {function(...*):?} */
 var ___errno_location = Module["___errno_location"] = createExportWrapper("__errno_location");
