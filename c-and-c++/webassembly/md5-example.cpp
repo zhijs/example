@@ -10,16 +10,19 @@ extern "C" {
   char* getMd5(char* pr, int len);
 }
 
-extern "c" {
+extern "C" {
   void printMd5();
 }
 
-char* getMd5(char* pr, int len) {
+char* getMd5(char pr[], int len) {
   return imd5.digestString(pr);
 }
 
-char *text = "hello world";
+// 检验是否可以正常输出 md5
+void printMd5 () {
+  char text[] = "hello world";
+  cout<< imd5.digestString(text) << endl;
+}
 
-cout<< imd5.digestString(*text) << endl;
 
 
