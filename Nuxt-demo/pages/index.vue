@@ -1,25 +1,34 @@
 <template>
-  <div class="container">
-    <com1></com1>
+  <div>
+      <h1>nuxt ssr demo</h1>
+      <div>message is {{fetchData.message}}</div>
+      <div>a username is {{fetchData.username}}</div>
   </div>
 </template>
 
 <script>
-import com1 from '~/components/com1.vue'
-
 export default {
-  components: {
-    com1
-  },
   data () {
     return {
-      message: '123'  
+      fetchData: {}
     }
   },
   head () {
     return {
-      title: "nuxt demo"  
+      title: `${this.fetchData.title} 2333333` 
     }  
+  },
+  async fetch () {
+    const fetchDataPromise = new Promise((resolve, reject)=> {
+      setTimeout(() => {
+        resolve({
+          message: 'fetch message',
+          title: 'fetch title',
+          username: 'fetch username'
+        });  
+      }, 5000)  
+    });
+    this.fetchData = await fetchDataPromise
   }
 }
 </script>

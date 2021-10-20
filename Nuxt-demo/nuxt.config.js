@@ -46,7 +46,13 @@ module.exports = {
     /*
     ** You can extend webpack config here
     */
+   optimization: {
+    minimize: false,
+   },
+   devtools: 'source-map',
     extend (config, ctx) {
+      config.devtool = 'source-map'
+
     }
   }
 }
